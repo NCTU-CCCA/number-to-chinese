@@ -1,3 +1,5 @@
+import Data.List (intercalate)
+
 -- vanilla version
 convert '1' = '一'
 convert '2' = '二'
@@ -21,3 +23,11 @@ dictionary = [
     ]
 
 numberToChinese' = mapM (flip lookup dictionary)
+
+-- with positional notation
+numerals = intercalate "千百十" (map (:[]) "極載澗溝壤梯京兆億萬")
+numberToChinese'' input = expo' ++ frac
+    where   converted = numberToChinese input
+            (expo, frac) = break (== '點') converted
+            expo' = concat $ zipWith mix expo numerals
+            mix a b = [a, b]
