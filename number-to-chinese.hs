@@ -7,7 +7,7 @@ convert '6' = '六'
 convert '7' = '七'
 convert '8' = '八'
 convert '9' = '九'
-convert '0' = '十'
+convert '0' = '零'
 convert '.' = '點'
 
 numberToChinese = map convert
